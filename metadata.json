@@ -1,0 +1,26 @@
+{
+    "recommendations": {
+    },
+    "attributes": {
+    },
+    "platforms": {
+      "ubuntu": [
+      ],
+      "debian": [
+      ]      
+    },
+    "maintainer": "Tomokazu Hirai",
+    "long_description": "",
+    "suggestions": {
+    },
+    "dependencies": {
+    },
+    "recipes": {
+    },
+    "version": "0.0.1",
+    "conflicting": {
+    },
+    "name": "pxe_install_server",
+    "providing": {
+    }
+}
