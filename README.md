@@ -1,4 +1,4 @@
-pxe_install_server
+PXE Installation Environment by Chef Cookbook
 ==================
 
 Overview
