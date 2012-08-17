@@ -9,7 +9,7 @@
       "debian": [
       ]      
     },
-    "maintainer": "Tomokazu Hirai",
+    "maintainer": "Joakim Kolsjö",
     "long_description": "",
     "suggestions": {
     },
@@ -17,10 +17,17 @@
     },
     "recipes": {
     },
-    "version": "0.0.1",
+    "maintainer_email": "joakim.kolsjo;AT;gmail;DOT;com",
+    "version": "0.1.2",
     "conflicting": {
     },
     "name": "pxe_install_server",
     "providing": {
-    }
-}
+    },
+    "license": "Apache 2.0",
+    "replacing": {
+    },
+    "groupings": {
+    },
+    "description": "Installs a PXE install server for installing ubuntu servers using kickstart."
+  }

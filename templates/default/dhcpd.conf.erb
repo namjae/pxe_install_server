@@ -2,7 +2,7 @@
 # Cookbook Name:: pxe_install_server
 # Templates:: dhcpd.conf
 #
-subnet <%= node['pxe_install_server']['pxeserver_ip'] %> netmask <%= node['pxe_install_server']['pxeserver_netmask'] %> {
+subnet <%= node['pxe_install_server']['pxeserver_address'] %> netmask <%= node['pxe_install_server']['pxeserver_netmask'] %> {
   range <%= node['pxe_install_server']['pxeserver_range_min'] %> <%= node['pxe_install_server']['pxeserver_range_max'] %>;
   option broadcast-address <%= node['pxe_install_server']['pxeserver_broadcast'] %>;
   option routers <%= node['pxe_install_server']['pxeserver_router'] %>;
@@ -11,7 +11,6 @@ subnet <%= node['pxe_install_server']['pxeserver_ip'] %> netmask <%= node['pxe_i
 
 <% @servers.each do |server| %>
 host <%= server[:hostname] %>.<%= server[:ip] %> {
-  #filename "pxelinux.0.<%= server[:release] %>";
   filename "pxelinux.0";
   hardware ethernet <%= server[:mac] %>;
 }

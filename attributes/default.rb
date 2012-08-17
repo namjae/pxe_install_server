@@ -3,7 +3,7 @@
 #
 # Author:: Tomokazu Hirai ( @jedipunkz )
 #
-default['pxe_install_server']['pxeserver_ip'] = "192.168.1.12"
+default['pxe_install_server']['pxeserver_address'] = "192.168.1.0"
 default['pxe_install_server']['pxeserver_netmask'] = "255.255.255.0"
 default['pxe_install_server']['pxeserver_broadcast'] = "192.168.1.255"
 default['pxe_install_server']['pxeserver_range_min'] = "192.168.1.200"
