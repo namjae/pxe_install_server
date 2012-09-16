@@ -7,17 +7,19 @@
 package "tftpd-hpa"
 package "dhcp3-server"
 
-node[:pxe_install_server][:releases].each do |release, path|
+node[:pxe_install_server][:releases].each do |release|
+  dist = release[:dist]
+  path = release[:path]
   case node['platform']
   when 'debian'
-    remote_file "/tmp/#{release}.netboot.tar.gz" do
-      source "http://archive.ubuntu.com/ubuntu/dists/#{path}/main/installer-amd64/current/images/netboot/netboot.tar.gz"
-      not_if { File.exists?("/srv/tftp/#{release}") || File.exists?("/tmp/#{release}.netboot.tar.gz") }
+    remote_file "/tmp/#{dist}.amd64.netboot.tar.gz" do
+      source "#{path}"
+      not_if { File.exists?("/srv/tftp/#{dist}") || File.exists?("/tmp/#{dist}.amd64.netboot.tar.gz") }
     end
   when 'ubuntu'
-    remote_file "/tmp/#{release}.netboot.tar.gz" do
-      source "http://archive.ubuntu.com/ubuntu/dists/#{path}/main/installer-amd64/current/images/netboot/netboot.tar.gz"
-      not_if { File.exists?("/var/lib/tftpboot/#{release}") || File.exists?("/tmp/#{release}.netboot.tar.gz") }
+    remote_file "/tmp/#{dist}.amd64.netboot.tar.gz" do
+      source "#{path}"
+      not_if { File.exists?("/var/lib/tftpboot/#{dist}") || File.exists?("/tmp/#{dist}.amd64.netboot.tar.gz") }
     end
   end
 
@@ -29,11 +31,11 @@ node[:pxe_install_server][:releases].each do |release, path|
     case node['platform']
     when 'debian'
       code <<-EOH
-      tar zxvf /tmp/#{release}.netboot.tar.gz -C /srv/tftp/
+      tar zxvf /tmp/#{dist}.amd64.netboot.tar.gz -C /srv/tftp/
       EOH
     when 'ubuntu'
       code <<-EOH
-      tar zxvf /tmp/#{release}.netboot.tar.gz -C /var/lib/tftpboot/
+      tar zxvf /tmp/#{dist}.amd64.netboot.tar.gz -C /var/lib/tftpboot/
       EOH
     end
   end
@@ -77,37 +79,71 @@ node[:pxe_install_server][:servers].each do |server|
   mac = server[:mac].downcase.gsub(/:/, '-')
   case node['platform']
   when 'debian'
-    template "/srv/tftp/pxelinux.cfg/01-#{mac}" do # It looks for 01-#{mac} for some reason.
-      source "pxelinux.erb"
-      mode 0644
-      variables({
-        :mac => mac,
-        :release => server[:release]
-      })
-      notifies :restart, resources(:service => "tftpd-hpa"), :delayed
+    case server[:release]
+    when 'ubuntu-12.04'
+      template "/srv/tftp/pxelinux.cfg/01-#{mac}" do # It looks for 01-#{mac} for some reason.
+        source "pxelinux.ubuntu.erb"
+        mode 0644
+        variables({
+          :mac => mac,
+          :release => server[:release]
+        })
+        notifies :restart, resources(:service => "tftpd-hpa"), :delayed
+      end
+    when 'debian-6.0.5'
+      template "/srv/tftp/pxelinux.cfg/01-#{mac}" do # It looks for 01-#{mac} for some reason.
+        source "pxelinux.debian.erb"
+        mode 0644
+        variables({
+          :mac => mac,
+          :release => server[:release]
+        })
+        notifies :restart, resources(:service => "tftpd-hpa"), :delayed
+      end
     end
   when 'ubuntu'
-    template "/var/lib/tftpboot/pxelinux.cfg/01-#{mac}" do # It looks for 01-#{mac} for some reason.
-      source "pxelinux.erb"
-      mode 0644
-      variables({
-        :mac => mac,
-        :release => server[:release]
-      })
-      notifies :restart, resources(:service => "tftpd-hpa"), :delayed
+    case server[:release]
+    when 'ubuntu-12.04'
+      template "/var/lib/tftpboot/pxelinux.cfg/01-#{mac}" do # It looks for 01-#{mac} for some reason.
+        source "pxelinux.ubuntu.erb"
+        mode 0644
+        variables({
+          :mac => mac,
+          :release => server[:release]
+        })
+        notifies :restart, resources(:service => "tftpd-hpa"), :delayed
+      end
+    when 'debian-6.0.5'
+      template "/var/lib/tftpboot/pxelinux.cfg/01-#{mac}" do # It looks for 01-#{mac} for some reason.
+        source "pxelinux.debian.erb"
+        mode 0644
+        variables({
+          :mac => mac,
+          :release => server[:release]
+        })
+        notifies :restart, resources(:service => "tftpd-hpa"), :delayed
+      end
     end
   end
 end
 
 case node['platform']
 when 'debian'
-  template "/srv/tftp/preseed.cfg" do
-    source "preseed.cfg.erb"
+  template "/srv/tftp/preseed.ubuntu.cfg" do
+    source "preseed.ubuntu.cfg.erb"
+    mode 0644
+  end
+  template "/srv/tftp/preseed.debian.cfg" do
+    source "preseed.debian.cfg.erb"
     mode 0644
   end
 when 'ubuntu'
-  template "/var/lib/tftpboot/preseed.cfg" do
-    source "preseed.cfg.erb"
+  template "/var/lib/tftpboot/preseed.ubuntu.cfg" do
+    source "preseed.ubuntu.cfg.erb"
+    mode 0644
+  end
+  template "/var/lib/tftpboot/preseed.debian.cfg" do
+    source "preseed.debian.cfg.erb"
     mode 0644
   end
 end

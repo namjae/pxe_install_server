@@ -17,3 +17,7 @@ Author
 
 Tomokazu Hirai ( @jedipunkz ).
 
+Known Bugs
+----
+
+* unsupport i386 now (2012/09/16)
