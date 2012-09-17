@@ -10,7 +10,10 @@ default['pxe_install_server']['pxeserver_range_min'] = "192.168.1.200"
 default['pxe_install_server']['pxeserver_range_max'] = "192.168.1.220"
 default['pxe_install_server']['pxeserver_router'] = "192.168.1.253"
 default['pxe_install_server']['pxeserver_nameserver'] = "8.8.8.8"
-# add distributions
+#default[:pxe_install_server][:releases] = [
+#    { "ubuntu-12.04" => "precise" },
+#    { "debian-6.05" => "squeeze" }
+#]
 default[:pxe_install_server][:releases] = [
     { :dist => "ubuntu-12.04", :path => "http://archive.ubuntu.com/ubuntu/dists/precise/main/installer-amd64/current/images/netboot/netboot.tar.gz" },
     { :dist => "debian-6.0.5", :path => "http://ftp.debian.org/debian/dists/squeeze/main/installer-amd64/current/images/netboot/netboot.tar.gz" }

@@ -262,6 +262,7 @@ d-i partman/confirm_nooverwrite boolean true
 # option can result in an incomplete system and should only be used by very
 # experienced users.
 #d-i base-installer/install-recommends boolean false
+d-i base-installer/install-recommends boolean false
 
 # Select the initramfs generator used to generate the initrd for 2.6 kernels.
 #d-i base-installer/kernel/linux/initramfs-generators string initramfs-tools
@@ -300,6 +301,7 @@ d-i partman/confirm_nooverwrite boolean true
 
 ### Package selection
 #tasksel tasksel/first multiselect standard, web-server
+tasksel tasksel/first multiselect standard
 # If the desktop task is selected, install the kde and xfce desktops
 # instead of the default gnome desktop.
 #tasksel tasksel/desktop multiselect kde, xfce
