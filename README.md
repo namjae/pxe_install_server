@@ -4,7 +4,14 @@ PXE Installation Environment by Chef Cookbook
 Overview
 ----
 
-Opscode Chef Cookbook for building PXE installation environment.
+Opscode Chef Cookbook for building PXE installation environment that includes these service.
+
+* TFTP server
+* DHCP server
+* Preseed config for debian and ubuntu
+
+Boot machines you want to build with PXE network boot. Machine will be built automaticaly.
+
 
 Supporting Server OS
 ----
