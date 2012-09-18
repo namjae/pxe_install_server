@@ -11,6 +11,7 @@ Opscode Chef Cookbook for building PXE installation environment that includes th
 * Preseed config for debian and ubuntu
 
 Boot machines you want to build with PXE network boot. Machine will be built automaticaly.
+Now I support Debian Gnu/Linux and Ubuntu with your machine. Please fork it and add target OSs.
 
 
 Supporting Server OS
@@ -19,7 +20,7 @@ Supporting Server OS
 * Debian Gnu/Linux (I tested Squueze.)
 * Ubuntu Server 10.04 LTS or Later
 
-Supporting Guest OS
+Supporting Target OS
 ----
 
 * Debian Gnu/Linux 6.0.5 Squeeze
