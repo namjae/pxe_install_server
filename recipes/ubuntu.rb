@@ -7,6 +7,15 @@
 package "tftpd-hpa"
 package "dhcp3-server"
 
+service "tftpd-hpa" do
+  action :start
+end
+
+service "isc-dhcp-server" do
+  action :start
+end
+
+
 node[:pxe_install_server][:releases].each do |release|
   dist = release[:dist]
   path = release[:path]
