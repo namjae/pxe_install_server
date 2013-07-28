@@ -102,12 +102,12 @@ end
 case node['platform']
 when 'debian'
   template "/srv/tftp/preseed.cfg" do
-    source "preseed.cfg.erb"
+    source "preseed.debian.cfg.erb"
     mode 0644
   end
 when 'ubuntu'
   template "/var/lib/tftpboot/preseed.cfg" do
-    source "preseed.cfg.erb"
+    source "preseed.ubuntu.cfg.erb"
     mode 0644
   end
 end

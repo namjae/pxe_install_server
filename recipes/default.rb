@@ -90,7 +90,7 @@ node[:pxe_install_server][:servers].each do |server|
         })
         notifies :restart, resources(:service => "tftpd-hpa"), :delayed
       end
-    when 'debian-6.0.5'
+    when 'debian-7.1'
       template "/srv/tftp/pxelinux.cfg/01-#{mac}" do # It looks for 01-#{mac} for some reason.
         source "pxelinux.debian.erb"
         mode 0644
@@ -113,7 +113,7 @@ node[:pxe_install_server][:servers].each do |server|
         })
         notifies :restart, resources(:service => "tftpd-hpa"), :delayed
       end
-    when 'debian-6.0.5'
+    when 'debian-7.1'
       template "/var/lib/tftpboot/pxelinux.cfg/01-#{mac}" do # It looks for 01-#{mac} for some reason.
         source "pxelinux.debian.erb"
         mode 0644
