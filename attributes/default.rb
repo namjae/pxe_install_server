@@ -16,15 +16,16 @@ default['pxe_install_server']['pxeserver_nameserver'] = "8.8.8.8"
 #    { "debian-6.05" => "squeeze" }
 #]
 default[:pxe_install_server][:releases] = [
-    { :dist => "ubuntu-12.04", :path => "http://archive.ubuntu.com/ubuntu/dists/precise/main/installer-amd64/current/images/netboot/netboot.tar.gz" },
-    { :dist => "debian-6.0.5", :path => "http://ftp.debian.org/debian/dists/wheezy/main/installer-amd64/current/images/netboot/netboot.tar.gz" }
+    { :dist => "ubuntu-12.04-amd64", :path => "http://archive.ubuntu.com/ubuntu/dists/precise/main/installer-amd64/current/images/netboot/netboot.tar.gz" },
+    { :dist => "ubuntu-12.04-i386", :path => "http://archive.ubuntu.com/ubuntu/dists/precise/main/installer-i386/current/images/netboot/netboot.tar.gz" },
+    { :dist => "debian-7.1-amd64", :path => "http://ftp.debian.org/debian/dists/wheezy/main/installer-amd64/current/images/netboot/netboot.tar.gz" }
 ]
 
 # add list(s) for your target node(s)
 default[:pxe_install_server][:servers] = [
-  { :mac => "00:d0:59:cb:71:f3", :release => "ubuntu-12.04", :ip => "192.168.1.191", :hostname => "foo" },
-  { :mac => "00:1c:25:74:ef:79", :release => "debian-7.1", :ip => "192.168.1.190", :hostname => "oldrocket" },
-  { :mac => "00:1c:25:9e:fe:1b", :release => "ubuntu-12.04", :ip => "192.168.1.192", :hostname => "watto" }
+  { :mac => "00:d0:59:cb:71:f3", :release => "ubuntu-12.04-i386", :ip => "192.168.1.191", :hostname => "oldrocket" },
+  { :mac => "00:1c:25:74:ef:79", :release => "debian-7.1-amd64", :ip => "192.168.1.190", :hostname => "rocket" },
+  { :mac => "00:1c:25:9e:fe:1b", :release => "debian-7.1-amd64", :ip => "192.168.1.192", :hostname => "watto" }
 ]
 
 
