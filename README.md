@@ -17,72 +17,40 @@ Now I support Debian Gnu/Linux and Ubuntu with your machine. Please fork it and 
 Supporting Server OS
 ----
 
-* Debian Gnu/Linux (I tested Squueze.)
-* Ubuntu Server 10.04 LTS or Later
+* Debian Gnu/Linux
+* Ubuntu Server 12.04 LTS
 
 Supporting Target OS
 ----
 
-* Debian Gnu/Linux 6.0.5 Squeeze
+* Debian Gnu/Linux 7.1 Squeeze
 * Ubuntu Server 12.04 LTS
+
+And maybe, you can add any distro. please fork it. :D
 
 How to use
 ----
 
-#### install these packages for chef
+git clone this repository.
 
-    % sudo apt-get update
-    % sudo apt-get install build-essential zlib1g-dev libssl-dev
+    % cd ~/your_chef_repo
+    % git clone git://github.com/jedipunkz/pxe_instal_server.git ./cookbooks/pxe_install_server
 
-#### install rbenv
+Upload this cookbook to your chef server.
 
-    % sudo -i
-    # cd ~
-    # git clone git://github.com/sstephenson/rbenv.git .rbenv
-    # echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
-    # echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+    % knife cookbook upload -o ./cookbook pxe_install_server
 
-#### install ruby-build
+Bootstrap your node which you want to build for PXE install server with this
+cookbook.
 
-    # mkdir -p ~/.rbenv/plugins
-    # cd ~/.rbenv/plugins
-    # git clone git://github.com/sstephenson/ruby-build.git
-
-#### install ruby and chef
-
-    # rbenv install 1.9.2-p290
-    # rbenv global 1.9.2-p290
-    # rbenv rehash
-    # gem install chef
-    # rbenv rehash
-
-#### git clone this repository and make environment
-
-    # cd ~
-    # mkdir chef-repo; cd chef-repo
-    # git clone https://github.com/jedipunkz/pxe_install_server.git
-    # mkdir ~/chef-repo/.chef
-    # cat > ~/chef-repo/.chef/solo.rb <<EOF
-    file_cache_path "/tmp/chef-solo"
-    cookbook_path ["/home/bob/chef-repo/cookbooks"]
-    role_path "/home/bob/role"
-    log_level :info
-    # cat > ~/chef-repo/.chef/pxe_install_server.json
-    {
-      "run_list": [
-        "recipe[pxe_install_server]"
-      ]
-    }
-
-#### execute chef with this cookbook
-
-    # chef-solo -c /root/chef-repo/.chef/solo.rb -j /home/root/chef-repo/.chef/pxe_preceed.json 
+    % knife bootstrap <ip_addr> -N <node_name> -r 'recipe[pxe_install_server]' \
+      --sudo -x <your_account_name>
 
 
-Author
+Authror
 ----
 
-Tomokazu Hirai ( @jedipunkz ).
+Tomokazu HIRAI ( @jedipunkz ).
 
 Known Bugs
 ----
