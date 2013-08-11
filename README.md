@@ -17,13 +17,13 @@ Now I support Debian Gnu/Linux and Ubuntu with your machine. Please fork it and 
 Supporting Server OS
 ----
 
-* Debian Gnu/Linux
+* Debian Gnu/Linux 7.1
 * Ubuntu Server 12.04 LTS
 
 Supporting Target OS
 ----
 
-* Debian Gnu/Linux 7.1 Squeeze
+* Debian Gnu/Linux 7.1
 * Ubuntu Server 12.04 LTS
 
 And maybe, you can add any distro. please fork it. :D
@@ -40,6 +40,35 @@ Upload this cookbook to your chef server.
 
     % knife cookbook upload -o ./cookbook pxe_install_server
 
+create data bag.
+
+    % knife data create pxe_targets
+
+edit data bag which named 'pxe_targets' and includes target nodes information.
+
+    % ${EDITOR} data_bags/pxe_targets/development.json
+    {
+      "id": "development",
+      "targets": [
+        {
+          "ip": "10.200.9.203",
+          "mac": "00:50:56:01:01:04",
+          "release": "ubuntu-12.04-amd64",
+          "hostname": "test01"
+        },
+        {
+          "ip": "10.200.9.201",
+          "mac": "00:50:56:01:01:03",
+          "release": "debian-7.1-amd64",
+          "hostname": "test02"
+        }
+      ]
+    }
+
+upload data bag to chef server.
+
+    % knife data bag from file pxe_targets data_bags/pxe_targets/development.json
+
 Bootstrap your node which you want to build for PXE install server with this
 cookbook.
 
@@ -55,4 +84,4 @@ Tomokazu HIRAI ( @jedipunkz ).
 Known Bugs
 ----
 
-* unsupport i386 now (2012/09/16)
+None
