@@ -1,17 +1,17 @@
-PXE Installation Environment by Chef Cookbook
+PXE Installation Cookbook
 ==================
 
 Overview
 ----
 
-Opscode Chef Cookbook for building PXE installation environment that includes these service.
+Opscode Chef Cookbook for building PXE installation environment that includes these services.
 
 * TFTP server
 * DHCP server
-* Preseed config for debian and ubuntu
+* Preseed config for debian and ubuntu linux
 
 Boot machines you want to build with PXE network boot. Machine will be built automaticaly.
-Now I support Debian Gnu/Linux and Ubuntu with your machine. Please fork it and add target OSs.
+Now I support Debian Gnu/Linux and Ubuntu with your target machine. Please fork it and add target OSs.
 
 
 Supporting Server OS
@@ -26,7 +26,7 @@ Supporting Target OS
 * Debian Gnu/Linux 7.1
 * Ubuntu Server 12.04 LTS
 
-And maybe, you can add any distro. please fork it. :D
+And maybe, you can add any distro to attribute file. Please fork it and fun. :D
 
 How to use
 ----
@@ -74,7 +74,6 @@ cookbook.
 
     % knife bootstrap <ip_addr> -N <node_name> -r 'recipe[pxe_install_server]' \
       --sudo -x <your_account_name>
-
 
 Authror
 ----
