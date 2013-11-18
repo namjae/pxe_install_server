@@ -52,11 +52,11 @@ d-i partman-lvm/confirm_nooverwrite boolean true
 d-i partman-auto-lvm/guided_size string max
 
 ## Default user, we can get away with a recipe to change this
-d-i passwd/user-fullname string Tomokazu Hirai
-d-i passwd/username string thirai
+d-i passwd/user-fullname string <%= @fullname %>
+d-i passwd/username string <%= @username %>
 #d-i passwd/user-password password vagrant
 #d-i passwd/user-password-again password vagrant
-d-i passwd/user-password-crypted password $1$Ogd8Qetr$uSC1BkCAs.Ebp8K26gcYc/
+d-i passwd/user-password-crypted password <%= @passwd %>
 d-i user-setup/encrypt-home boolean false
 d-i user-setup/allow-password-weak boolean true
 

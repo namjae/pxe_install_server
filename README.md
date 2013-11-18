@@ -42,7 +42,7 @@ Upload this cookbook to your chef server.
 
 create data bag.
 
-    % knife data create pxe_targets
+    % knife data bag create pxe_targets
 
 edit data bag which named 'pxe_targets' and includes target nodes information.
 
