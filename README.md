@@ -28,6 +28,14 @@ Supporting Target OS
 
 And maybe, you can add any distro to attribute file. Please fork it and fun. :D
 
+Authror
+----
+
+* name : Tomokazu HIRAI ( @jedipunkz )
+* blog : http://jedipunkz.github.io/
+* twitter : https://twitter.com/jedipunkz
+
+
 How to use
 ----
 
@@ -54,13 +62,19 @@ edit data bag which named 'pxe_targets' and includes target nodes information.
           "ip": "10.200.9.203",
           "mac": "00:50:56:01:01:04",
           "release": "ubuntu-12.04-amd64",
-          "hostname": "test01"
+          "hostname": "test01",
+          "user-fullname": "Test User",
+          "username": "testuser",
+          "user-password-crypted": "$1$tCt.rk5c$t4T.Nrk4TZ15hpxrsZotV0"          
         },
         {
           "ip": "10.200.9.201",
           "mac": "00:50:56:01:01:03",
           "release": "debian-7.1-amd64",
-          "hostname": "test02"
+          "hostname": "test02",
+          "user-fullname": "Test User",
+          "username": "testuser",
+          "user-password-crypted": "$1$tCt.rk5c$t4T.Nrk4TZ15hpxrsZotV0"
         }
       ]
     }
@@ -75,10 +89,12 @@ cookbook.
     % knife bootstrap <ip_addr> -N <node_name> -r 'recipe[pxe_install_server]' \
       --sudo -x <your_account_name>
 
-Authror
+Version
 ----
 
-Tomokazu HIRAI ( @jedipunkz ).
+* 0.0.3 : supported to specify user account for preseed.
+* 0.0.2 : blush up vesion
+* 0.0.1 : first version :D
 
 Known Bugs
 ----
