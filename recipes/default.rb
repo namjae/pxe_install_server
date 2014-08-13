@@ -102,11 +102,15 @@ node["pxe_install_server"]["releases"].each do |release|
 end
 
 service "tftpd-hpa" do
+  restart_command "service tftpd-hpa restart"
+  start_command "service tftpd-hpa start"
   supports :restart => true
-  action :start
+  action :restart
 end
 
 service "isc-dhcp-server" do
+  restart_command "service isc-dhcp-server restart"
+  start_command "service isc-dhcp-server start"
   supports :restart => true
-  action :start
+  action :restart
 end

@@ -19,12 +19,13 @@ Supporting Server OS
 
 * Debian Gnu/Linux 7.1
 * Ubuntu Server 12.04 LTS
+* Ubuntu Server 14.04 LTS
 
 Supporting Target OS
 ----
 
 * Debian Gnu/Linux 7.1
-* Ubuntu Server 12.04 LTS
+* Ubuntu Server 14.04 LTS
 
 And maybe, you can add any distro to attribute file. Please fork it and fun. :D
 
@@ -61,7 +62,7 @@ edit data bag which named 'pxe_targets' and includes target nodes information.
         {
           "ip": "10.200.9.203",
           "mac": "00:50:56:01:01:04",
-          "release": "ubuntu-12.04-amd64",
+          "release": "ubuntu-14.04-amd64",
           "hostname": "test01",
           "user-fullname": "Test User",
           "username": "testuser",
@@ -92,6 +93,7 @@ cookbook.
 Version
 ----
 
+* 0.0.4 : supported ubuntu 14.04 for target os.
 * 0.0.3 : supported to specify user account for preseed.
 * 0.0.2 : blush up vesion
 * 0.0.1 : first version :D

@@ -19,7 +19,7 @@ describe 'pxe_install_server::default' do
     # dir = chef_run.node["pxe_install_server"]["release"]
     #expect(chef_run).to create_remote_file "/tmp/#{node["pxe_install_server"]["release"]}/amd64.netboot.tar.gz"
     #expect(chef_run).to create_remote_file "/tmp/#{dir}/amd64.netboot.tar.gz"
-    chef_run.should create_remote_file "/tmp/ubuntu-12.04.amd64.netboot.tar.gz"
+    chef_run.should create_remote_file "/tmp/ubuntu-14.04.amd64.netboot.tar.gz"
   end
 
   it 'should be executed bash command' do

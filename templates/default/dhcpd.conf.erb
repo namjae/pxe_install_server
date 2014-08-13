@@ -16,10 +16,10 @@ host <%= target["hostname"] %>.<%= target["ip"] %> {
   filename "pxelinux.0-debian-7.1-amd64";
   <% elsif target["release"].include?("debian-7.1-i386") %>
   filename "pxelinux.0-debian-7.1-i386";
-  <% elsif target["release"].include?("ubuntu-12.04-amd64") %>
-  filename "pxelinux.0-ubuntu-12.04-amd64";
-  <% elsif target["release"].include?("ubuntu-12.04-i386") %>
-  filename "pxelinux.0-ubuntu-12.04-i386";
+  <% elsif target["release"].include?("ubuntu-14.04-amd64") %>
+  filename "pxelinux.0-ubuntu-14.04-amd64";
+  <% elsif target["release"].include?("ubuntu-14.04-i386") %>
+  filename "pxelinux.0-ubuntu-14.04-i386";
   <% end %>
   hardware ethernet <%= target["mac"] %>;
 }
