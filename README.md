@@ -43,7 +43,7 @@ How to use
 git clone this repository.
 
     % cd ~/your_chef_repo
-    % git clone git://github.com/jedipunkz/pxe_instal_server.git ./cookbooks/pxe_install_server
+    % git clone git://github.com/jedipunkz/pxe_install_server.git ./cookbooks/pxe_install_server
 
 Upload this cookbook to your chef server.
 
